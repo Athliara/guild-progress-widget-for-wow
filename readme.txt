@@ -30,7 +30,9 @@ Main features:
 * Select which raids appear in the public progress display.
 * Manual progress overrides for raids with unavailable or incomplete API data.
 
-Support: https://a-wd.eu
+Documentation: https://github.com/Athliara/guild-progress-widget-for-wow
+
+Report bugs: https://github.com/Athliara/guild-progress-widget-for-wow/issues
 
 == Installation ==
 

@@ -1699,6 +1699,12 @@ final class Athlios_Guild_Progress_Plugin
                 </div>
             </div>
 
+            <p>
+                <a href="<?php echo esc_url(ATHLIOS_GUILD_PROGRESS_HELP_URL); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Plugin Documentation', 'guild-progress-widget-for-wow'); ?></a>
+                |
+                <a href="<?php echo esc_url(ATHLIOS_GUILD_PROGRESS_BUG_URL); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Report Bugs', 'guild-progress-widget-for-wow'); ?></a>
+            </p>
+
             <form method="post" action="options.php" class="wgp-admin-form">
                 <?php settings_fields('wgp_settings_group'); ?>
                 <div class="wgp-admin-tabs" role="tablist" aria-label="<?php esc_attr_e('Guild Progress Widget for WoW settings', 'guild-progress-widget-for-wow'); ?>">

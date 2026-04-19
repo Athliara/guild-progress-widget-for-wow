@@ -22,6 +22,8 @@ define('ATHLIOS_GUILD_PROGRESS_PLUGIN_VERSION', '1.1.0');
 define('ATHLIOS_GUILD_PROGRESS_PLUGIN_FILE', __FILE__);
 define('ATHLIOS_GUILD_PROGRESS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ATHLIOS_GUILD_PROGRESS_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('ATHLIOS_GUILD_PROGRESS_HELP_URL', 'https://github.com/Athliara/guild-progress-widget-for-wow');
+define('ATHLIOS_GUILD_PROGRESS_BUG_URL', 'https://github.com/Athliara/guild-progress-widget-for-wow/issues');
 
 require_once ATHLIOS_GUILD_PROGRESS_PLUGIN_DIR . 'includes/class-wow-guild-progress-plugin.php';
 
