@@ -1,6 +1,6 @@
 === Guild Progress Widget for WoW ===
 Contributors: athlios
-Tags: world of warcraft, wow, guild, raid, widget, shortcode
+Tags: world of warcraft, wow, guild, raid, widget
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 8.2

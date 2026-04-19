@@ -5,9 +5,9 @@ if (!defined('ABSPATH')) {
 }
 
 if (!class_exists('WP_Widget') && defined('ABSPATH')) {
-    $widget_file = ABSPATH . WPINC . '/class-wp-widget.php';
-    if (file_exists($widget_file)) {
-        require_once $widget_file;
+    $athlios_guild_progress_widget_file = ABSPATH . WPINC . '/class-wp-widget.php';
+    if (file_exists($athlios_guild_progress_widget_file)) {
+        require_once $athlios_guild_progress_widget_file;
     }
 }
 
@@ -1685,14 +1685,14 @@ final class Athlios_Guild_Progress_Plugin
                 ->setTimezone(new DateTimeZone('Europe/Paris'))
                 ->format('Y-m-d H:i');
         }
-        $syncStatus = isset($_GET['wgp_sync_status']) ? sanitize_key(wp_unslash((string) $_GET['wgp_sync_status'])) : '';
-        $syncMessage = isset($_GET['wgp_sync_message']) ? sanitize_text_field(wp_unslash((string) $_GET['wgp_sync_message'])) : '';
-        $settingsUpdated = isset($_GET['settings-updated']) ? sanitize_key(wp_unslash((string) $_GET['settings-updated'])) : '';
+        $syncStatus = sanitize_key((string) filter_input(INPUT_GET, 'wgp_sync_status', FILTER_UNSAFE_RAW));
+        $syncMessage = sanitize_text_field((string) filter_input(INPUT_GET, 'wgp_sync_message', FILTER_UNSAFE_RAW));
+        $settingsUpdated = sanitize_key((string) filter_input(INPUT_GET, 'settings-updated', FILTER_UNSAFE_RAW));
         $resolvedLocale = $settings['locale'] !== '' ? $settings['locale'] : $this->get_default_locale_for_region((string) $settings['region']);
         ?>
         <div class="wrap wgp-admin-page">
             <div class="wgp-admin-hero">
-                <span class="wgp-admin-hero__logo" aria-hidden="true"><?php echo $this->get_logo_svg_markup(); ?></span>
+                <span class="wgp-admin-hero__logo" aria-hidden="true"><?php echo wp_kses($this->get_logo_svg_markup(), $this->get_logo_svg_allowed_html()); ?></span>
                 <div class="wgp-admin-hero__content">
                     <h1><?php echo esc_html(self::PLUGIN_LABEL); ?></h1>
                     <p><?php esc_html_e('Sync your guild raid progression from Battle.net and control which raids appear in the widget or shortcode output.', 'guild-progress-widget-for-wow'); ?></p>
@@ -1720,7 +1720,12 @@ final class Athlios_Guild_Progress_Plugin
                         </div>
                         <div class="wgp-admin-meta">
                             <p><?php esc_html_e('Use widget "Guild Progress Widget for WoW" or shortcode [wow_guild_progress].', 'guild-progress-widget-for-wow'); ?></p>
-                            <p><?php printf(esc_html__('Daily sync is scheduled for 02:00 CET/CEST. Next run: %s', 'guild-progress-widget-for-wow'), $nextRunDisplay !== '' ? esc_html($nextRunDisplay) : esc_html__('Not scheduled', 'guild-progress-widget-for-wow')); ?></p>
+                            <p>
+                                <?php
+                                /* translators: %s: next scheduled sync date and time. */
+                                printf(esc_html__('Daily sync is scheduled for 02:00 CET/CEST. Next run: %s', 'guild-progress-widget-for-wow'), $nextRunDisplay !== '' ? esc_html($nextRunDisplay) : esc_html__('Not scheduled', 'guild-progress-widget-for-wow'));
+                                ?>
+                            </p>
                         </div>
                         <div class="wgp-admin-actions">
                             <?php submit_button(__('Save Changes', 'guild-progress-widget-for-wow'), 'primary', 'submit', false); ?>
@@ -1881,6 +1886,32 @@ final class Athlios_Guild_Progress_Plugin
         return is_string($svg) ? $svg : '';
     }
 
+    private function get_logo_svg_allowed_html(): array
+    {
+        return array(
+            'svg' => array(
+                'id' => true,
+                'version' => true,
+                'xmlns' => true,
+                'xmlns:xlink' => true,
+                'width' => true,
+                'height' => true,
+                'viewbox' => true,
+                'viewBox' => true,
+            ),
+            'g' => array(
+                'id' => true,
+            ),
+            'path' => array(
+                'id' => true,
+                'd' => true,
+                'stroke' => true,
+                'fill' => true,
+                'fill-rule' => true,
+            ),
+        );
+    }
+
     private function humanize_slug(string $value): string
     {
         $value = trim($value);
@@ -1978,7 +2009,12 @@ final class Athlios_Guild_Progress_Plugin
                 <?php endforeach; ?>
             </select>
             <p class="description"><?php esc_html_e('Choose the World of Warcraft guild region.', 'guild-progress-widget-for-wow'); ?></p>
-            <p class="description"><?php printf(wp_kses_post(__('Locale is selected automatically from the region: <strong data-locale-preview>%s</strong>.', 'guild-progress-widget-for-wow')), esc_html($locale)); ?></p>
+            <p class="description">
+                <?php
+                /* translators: %s: locale code selected from the chosen region. */
+                printf(wp_kses_post(__('Locale is selected automatically from the region: <strong data-locale-preview>%s</strong>.', 'guild-progress-widget-for-wow')), esc_html($locale));
+                ?>
+            </p>
         </div>
         <?php
     }
