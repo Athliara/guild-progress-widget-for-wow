@@ -1,0 +1,236 @@
+.wgp-wrap {
+    background: transparent;
+    padding: 0;
+    font-size: 14px;
+    color: #f0f4fa;
+}
+
+.wgp-raid + .wgp-raid {
+    margin-top: 0;
+}
+
+.wgp-raid {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    overflow: hidden;
+    background: #080b12;
+}
+
+.wgp-raid.has-bg::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background-image: var(--wgp-raid-bg-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    opacity: 0.95;
+    pointer-events: none;
+    transform: scale(1.02);
+    transform-origin: center top;
+}
+
+.wgp-raid.has-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(5, 8, 14, 0.01) 0%, rgba(4, 7, 12, 0.08) 62%, rgba(2, 4, 8, 0.18) 100%),
+        linear-gradient(90deg, rgba(3, 8, 18, 0.03) 0%, rgba(3, 8, 18, 0.01) 50%, rgba(3, 8, 18, 0.03) 100%);
+    pointer-events: none;
+}
+
+.wgp-raid-toggle,
+.wgp-bosses {
+    position: relative;
+    z-index: 1;
+}
+
+.wgp-raid-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.14));
+    border: 0;
+    height: 42px;
+    min-height: 42px;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font-weight: 700;
+    color: #f9fcff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.wgp-raid-toggle[aria-expanded="true"] {
+    background: transparent;
+}
+
+.wgp-raid-title {
+    display: block;
+    font-size: 15px;
+    line-height: 1.22;
+    margin-left: 14px;
+    padding-bottom: 2px;
+}
+
+.wgp-raid-count {
+    width: 56px;
+    flex: 0 0 56px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 4px;
+    text-align: right;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+    margin-right: 14px;
+    padding-bottom: 1px;
+}
+
+.wgp-raid-tier {
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.2px;
+    color: #d5e5ff;
+}
+
+.wgp-raid-fraction {
+    line-height: 1.1;
+}
+
+.wgp-bosses {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+    position: relative;
+}
+
+.wgp-raid-toggle[aria-expanded="true"] + .wgp-bosses::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 0;
+    border-top: 1px solid rgba(126, 145, 170, 0.35);
+    pointer-events: none;
+}
+
+.wgp-boss {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 0;
+}
+
+.wgp-wrap .wgp-bosses > li.wgp-boss {
+    display: flex;
+    line-height: normal;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.wgp-bosses li:first-child {
+    padding-top: 15px !important;
+}
+
+.wgp-bosses li:last-child {
+    padding-bottom: 15px !important;
+}
+
+.wgp-boss-name {
+    color: #38ff44;
+    flex: 1;
+    min-width: 0;
+    margin-left: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.wgp-mark {
+    width: 56px;
+    flex: 0 0 56px;
+    display: inline-block;
+    float: right;
+    margin-right: 14px;
+    text-align: right;
+    border-radius: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.wgp-mark.is-killed {
+    background: transparent;
+    color: #34f75a;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9);
+}
+
+.wgp-raid-tier.is-normal,
+.wgp-mark.is-killed.is-normal {
+    color: #1eff00;
+}
+
+.wgp-raid-tier.is-heroic,
+.wgp-mark.is-killed.is-heroic {
+    color: #0070dd;
+}
+
+.wgp-raid-tier.is-mythic,
+.wgp-mark.is-killed.is-mythic {
+    color: #a335ee;
+}
+
+.wgp-mark.is-killed.is-last-boss-mythic {
+    color: #ff8000;
+}
+
+.wgp-mark.is-unkilled {
+    color: #9eb0c4;
+}
+
+.wgp-updated {
+    margin-top: 8px;
+    color: #b3c1cf;
+    font-size: 12px;
+}
+
+@media (max-width: 767px) {
+    .wgp-raid-title {
+        font-size: 15px;
+    }
+    .wgp-raid-count {
+        width: 56px;
+        flex-basis: 56px;
+        font-size: 14px;
+    }
+    .wgp-raid-tier {
+        font-size: 10px;
+    }
+    .wgp-boss-name {
+        font-size: 14px;
+    }
+    .wgp-mark {
+        width: 56px;
+        flex-basis: 56px;
+        font-size: 14px;
+    }
+}
+
+.wgp-error {
+    color: #ff8f8f;
+}
+
+.wpb_widgetised_column .widget ul li:last-child,
+aside.edgtf-sidebar .widget ul li:last-child {
+    padding-bottom: 15px;
+}
