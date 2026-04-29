@@ -17,9 +17,9 @@ final class Aths_Guild_Progress_Plugin
     private const PLUGIN_LABEL = 'Aths Guild Progress for WoW';
     private const MENU_LABEL = 'Aths Guild Progress';
     private const MENU_ICON = 'data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwLCAwLCA0MDAsNDAwIj48ZyBpZD0ic3ZnZyI+PHBhdGggaWQ9InBhdGgwIiBkPSJNMTY3Ljk5MyA1Mi41OTMgQyAxNTMuODYwIDU1LjYyMSwxMzUuNzg3IDYyLjYzMSwxMjQuMzM2IDY5LjUyNyBMIDExNS4yNDYgNzUuMDAwIDk1LjEyMyA3NS4wMDAgTCA3NS4wMDAgNzUuMDAwIDc1LjAwMCA5NS4xMjMgTCA3NS4wMDAgMTE1LjI0NiA2OS41MjcgMTI0LjMzNiBDIDQzLjI1MiAxNjcuOTY5LDQzLjI1MiAyMzIuMDMxLDY5LjUyNyAyNzUuNjY0IEwgNzUuMDAwIDI4NC43NTQgNzUuMDAwIDMwNC44NzcgTCA3NS4wMDAgMzI1LjAwMCA5NS4xMjMgMzI1LjAwMCBMIDExNS4yNDYgMzI1LjAwMCAxMjQuMzM2IDMzMC40NzMgQyAxNjcuOTY5IDM1Ni43NDgsMjMyLjAzMSAzNTYuNzQ4LDI3NS42NjQgMzMwLjQ3MyBMIDI4NC43NTQgMzI1LjAwMCAzMDQuODc3IDMyNS4wMDAgTCAzMjUuMDAwIDMyNS4wMDAgMzI1LjAwMCAzMDQuODc3IEwgMzI1LjAwMCAyODQuNzU0IDMzMC40NzMgMjc1LjY2NCBDIDM1Ni43NDggMjMyLjAzMSwzNTYuNzQ4IDE2Ny45NjksMzMwLjQ3MyAxMjQuMzM2IEwgMzI1LjAwMCAxMTUuMjQ2IDMyNS4wMDAgOTUuMTIzIEwgMzI1LjAwMCA3NS4wMDAgMzA0Ljg3NyA3NS4wMDAgTCAyODQuNzU0IDc1LjAwMCAyNzUuNjY0IDY5LjUyNyBDIDI0Ni45NTkgNTIuMjQxLDIwMi4zNjcgNDUuMjI4LDE2Ny45OTMgNTIuNTkzIE0yMjcuMDM1IDc5LjA3MSBDIDIzOC41MTEgODEuNjMxLDI2MC40ODYgOTAuOTkxLDI2OC42MjEgOTYuNzgzIEMgMjcyLjMzOSA5OS40MzEsMjc1LjUxNiAxMDAuMDAwLDI4Ni41NjkgMTAwLjAwMCBMIDMwMC4wMDAgMTAwLjAwMCAzMDAuMDAwIDExMy40MzEgQyAzMDAuMDAwIDEyNC40ODQsMzAwLjU2OSAxMjcuNjYxLDMwMy4yMTcgMTMxLjM3OSBDIDMyOS43MzQgMTY4LjYxOSwzMjkuNzM0IDIzMS4zODEsMzAzLjIxNyAyNjguNjIxIEMgMzAwLjU2OSAyNzIuMzM5LDMwMC4wMDAgMjc1LjUxNiwzMDAuMDAwIDI4Ni41NjkgTCAzMDAuMDAwIDMwMC4wMDAgMjg2LjU2OSAzMDAuMDAwIEMgMjc1LjUxNiAzMDAuMDAwLDI3Mi4zMzkgMzAwLjU2OSwyNjguNjIxIDMwMy4yMTcgQyAyMzEuMzgxIDMyOS43MzQsMTY4LjYxOSAzMjkuNzM0LDEzMS4zNzkgMzAzLjIxNyBDIDEyNy42NjEgMzAwLjU2OSwxMjQuNDg0IDMwMC4wMDAsMTEzLjQzMSAzMDAuMDAwIEwgMTAwLjAwMCAzMDAuMDAwIDEwMC4wMDAgMjg2LjU2OSBDIDEwMC4wMDAgMjc1LjUxNiw5OS40MzEgMjcyLjMzOSw5Ni43ODMgMjY4LjYyMSBDIDcwLjI2NiAyMzEuMzgxLDcwLjI2NiAxNjguNjE5LDk2Ljc4MyAxMzEuMzc5IEMgOTkuNDMxIDEyNy42NjEsMTAwLjAwMCAxMjQuNDg0LDEwMC4wMDAgMTEzLjQzMSBMIDEwMC4wMDAgMTAwLjAwMCAxMTMuNDMxIDEwMC4wMDAgQyAxMjQuMzgzIDEwMC4wMDAsMTI3LjY3NiA5OS40MjAsMTMxLjI3NiA5Ni44NTcgQyAxNTUuMzY2IDc5LjcwMywxOTYuMDE5IDcyLjE1MiwyMjcuMDM1IDc5LjA3MSBNMTE4LjMzOSAxNDQuNDM1IEMgMTI0LjQzOSAxNTEuMzY1LDEyNC40NTEgMTUxLjQwNSwxMzYuNDU1IDIwNS40NDcgQyAxNDkuNDUxIDI2My45NDgsMTQ5LjI5OSAyNjEuNzIzLDE0MC45MjMgMjcwLjcwMyBMIDEzNi45MTUgMjc1LjAwMCAxNjIuMjA4IDI3NS4wMDAgQyAxNzYuMTE4IDI3NS4wMDAsMTg3LjUwMCAyNzQuNjE0LDE4Ny41MDAgMjc0LjE0MSBDIDE4Ny41MDAgMjczLjY2OSwxODYuMzkwIDI3MS4xMzYsMTg1LjAzNCAyNjguNTE0IEMgMTgyLjc1MyAyNjQuMTAzLDE5Ni40MzMgMjE3LjIxNSwyMDAuMDAwIDIxNy4yMTUgQyAyMDMuNTY3IDIxNy4yMTUsMjE3LjI0NyAyNjQuMTAzLDIxNC45NjYgMjY4LjUxNCBDIDIxMy42MTAgMjcxLjEzNiwyMTIuNTAwIDI3My42NjksMjEyLjUwMCAyNzQuMTQxIEMgMjEyLjUwMCAyNzQuNjE0LDIyMy44ODIgMjc1LjAwMCwyMzcuNzkyIDI3NS4wMDAgTCAyNjMuMDg1IDI3NS4wMDAgMjU5LjA3NyAyNzAuNzAzIEMgMjUwLjcwMSAyNjEuNzIzLDI1MC41NDkgMjYzLjk0OCwyNjMuNTQ1IDIwNS40NDcgQyAyNzUuNTQ5IDE1MS40MDUsMjc1LjU2MSAxNTEuMzY1LDI4MS42NjEgMTQ0LjQzNSBMIDI4Ny43NjYgMTM3LjUwMCAyNjIuNjMzIDEzNy41MDAgQyAyNDguODEwIDEzNy41MDAsMjM3LjUwMCAxMzcuODI4LDIzNy41MDAgMTM4LjIyOCBDIDIzNy41MDAgMTM4LjYyOSwyMzguNjk3IDE0MS40NjYsMjQwLjE2MCAxNDQuNTM0IEMgMjQyLjc2NCAxNDkuOTk1LDIzMS4zOTYgMjA3LjQ5MCwyMjguMTEzIDIwNS40NjEgQyAyMjcuNTg0IDIwNS4xMzQsMjIxLjI5MyAxODkuNzA5LDIxNC4xMzMgMTcxLjE4MyBDIDIwNi45NzQgMTUyLjY1NywyMDAuNjE0IDEzNy41MDAsMjAwLjAwMCAxMzcuNTAwIEMgMTk5LjM4NiAxMzcuNTAwLDE5My4wMjYgMTUyLjY1NywxODUuODY3IDE3MS4xODMgQyAxNzguNzA3IDE4OS43MDksMTcyLjQxNiAyMDUuMTM0LDE3MS44ODcgMjA1LjQ2MSBDIDE2OC42MDQgMjA3LjQ5MCwxNTcuMjM2IDE0OS45OTUsMTU5Ljg0MCAxNDQuNTM0IEMgMTYxLjMwMyAxNDEuNDY2LDE2Mi41MDAgMTM4LjYyOSwxNjIuNTAwIDEzOC4yMjggQyAxNjIuNTAwIDEzNy44MjgsMTUxLjE5MCAxMzcuNTAwLDEzNy4zNjcgMTM3LjUwMCBMIDExMi4yMzQgMTM3LjUwMCAxMTguMzM5IDE0NC40MzUgIiBzdHJva2U9Im5vbmUiIGZpbGw9IiNhN2FhYWQiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPjwvZz48L3N2Zz4=';
-    private const SETTINGS_OPTION = 'wgp_settings';
-    private const CACHE_OPTION = 'wgp_progress_cache';
-    private const CRON_HOOK = 'wgp_daily_sync';
+    private const SETTINGS_OPTION = 'athsgupr_settings';
+    private const CACHE_OPTION = 'athsgupr_progress_cache';
+    private const CRON_HOOK = 'athsgupr_daily_sync';
     private const RAID_CATALOG = array(
         array(
             'expansion' => 'Classic',
@@ -203,7 +203,7 @@ final class Aths_Guild_Progress_Plugin
         add_action('admin_menu', array($this, 'register_admin_page'));
         add_action('admin_init', array($this, 'register_settings'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
-        add_action('admin_post_wgp_manual_sync', array($this, 'handle_manual_sync'));
+        add_action('admin_post_athsgupr_manual_sync', array($this, 'handle_manual_sync'));
         add_action(self::CRON_HOOK, array($this, 'refresh_progress_data'));
         add_action('init', array($this, 'register_shortcode'));
         add_action('widgets_init', array($this, 'register_widget'));
@@ -224,14 +224,14 @@ final class Aths_Guild_Progress_Plugin
     public function enqueue_assets(): void
     {
         wp_register_style(
-            'wgp-style',
+            'athsgupr-style',
             ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/wgp.css',
             array(),
             filemtime(ATHS_GUILD_PROGRESS_PLUGIN_DIR . 'assets/wgp.css')
         );
 
         wp_register_script(
-            'wgp-script',
+            'athsgupr-script',
             ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/wgp.js',
             array(),
             filemtime(ATHS_GUILD_PROGRESS_PLUGIN_DIR . 'assets/wgp.js'),
@@ -241,8 +241,8 @@ final class Aths_Guild_Progress_Plugin
 
     public function render_shortcode(): string
     {
-        wp_enqueue_style('wgp-style');
-        wp_enqueue_script('wgp-script');
+        wp_enqueue_style('athsgupr-style');
+        wp_enqueue_script('athsgupr-script');
         return $this->build_progress_html();
     }
 
@@ -288,7 +288,7 @@ final class Aths_Guild_Progress_Plugin
             return '<div class="wgp-wrap"><p>No raid progress available yet.</p></div>';
         }
 
-        $uid = wp_unique_id('wgp-');
+        $uid = wp_unique_id('athsgupr-');
         ob_start();
         ?>
         <div class="wgp-wrap">
@@ -437,14 +437,14 @@ final class Aths_Guild_Progress_Plugin
         );
 
         if (is_wp_error($response)) {
-            return new WP_Error('wgp_token_error', 'Battle.net auth request failed.');
+            return new WP_Error('athsgupr_token_error', 'Battle.net auth request failed.');
         }
 
         $status = wp_remote_retrieve_response_code($response);
         $body = json_decode((string) wp_remote_retrieve_body($response), true);
 
         if ($status < 200 || $status >= 300 || empty($body['access_token'])) {
-            return new WP_Error('wgp_token_invalid', 'Battle.net auth failed. Verify client ID/secret and region.');
+            return new WP_Error('athsgupr_token_invalid', 'Battle.net auth failed. Verify client ID/secret and region.');
         }
 
         return (string) $body['access_token'];
@@ -504,7 +504,7 @@ final class Aths_Guild_Progress_Plugin
                 $message .= ' Progress detail: ' . $progressDetail;
             }
 
-            return new WP_Error('wgp_progress_invalid', $message);
+            return new WP_Error('athsgupr_progress_invalid', $message);
         }
 
         return $progressBody;
@@ -529,7 +529,7 @@ final class Aths_Guild_Progress_Plugin
         );
 
         if (is_wp_error($response)) {
-            return new WP_Error('wgp_progress_request_failed', 'Failed to fetch guild data from Battle.net.');
+            return new WP_Error('athsgupr_progress_request_failed', 'Failed to fetch guild data from Battle.net.');
         }
 
         $status = wp_remote_retrieve_response_code($response);
@@ -1615,11 +1615,11 @@ final class Aths_Guild_Progress_Plugin
             return;
         }
 
-        wp_enqueue_style('wgp-admin-settings', ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/admin-settings.css', array(), ATHS_GUILD_PROGRESS_PLUGIN_VERSION);
-        wp_enqueue_script('wgp-admin-settings', ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/admin-settings.js', array(), ATHS_GUILD_PROGRESS_PLUGIN_VERSION, true);
+        wp_enqueue_style('athsgupr-admin-settings', ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/admin-settings.css', array(), ATHS_GUILD_PROGRESS_PLUGIN_VERSION);
+        wp_enqueue_script('athsgupr-admin-settings', ATHS_GUILD_PROGRESS_PLUGIN_URL . 'assets/admin-settings.js', array(), ATHS_GUILD_PROGRESS_PLUGIN_VERSION, true);
         wp_localize_script(
-            'wgp-admin-settings',
-            'wgpAdminSettings',
+            'athsgupr-admin-settings',
+            'athsguprAdminSettings',
             array(
                 'localeMap' => array(
                     'us' => 'en_US',
@@ -1635,9 +1635,13 @@ final class Aths_Guild_Progress_Plugin
     public function register_settings(): void
     {
         register_setting(
-            'wgp_settings_group',
+            'athsgupr_settings_group',
             self::SETTINGS_OPTION,
-            array($this, 'sanitize_settings')
+            array(
+                'type' => 'array',
+                'sanitize_callback' => array($this, 'sanitize_settings'),
+                'default' => array(),
+            )
         );
     }
 
@@ -1647,16 +1651,22 @@ final class Aths_Guild_Progress_Plugin
             $input = array();
         }
 
-        $region = sanitize_text_field((string) ($input['region'] ?? 'eu'));
+        $region = sanitize_key((string) ($input['region'] ?? 'eu'));
+        if (!in_array($region, array('eu', 'us', 'kr', 'tw', 'cn'), true)) {
+            $region = 'eu';
+        }
+
         $guildName = sanitize_text_field((string) ($input['guild_name'] ?? ''));
         $server = sanitize_text_field((string) ($input['server'] ?? ''));
+        $clientSecret = $input['client_secret'] ?? '';
+        $clientSecret = is_scalar($clientSecret) ? (string) $clientSecret : '';
         $locale = $this->get_default_locale_for_region($region);
 
         return array(
             'guild_name' => $guildName,
             'server' => $server,
             'client_id' => sanitize_text_field((string) ($input['client_id'] ?? '')),
-            'client_secret' => sanitize_text_field((string) ($input['client_secret'] ?? '')),
+            'client_secret' => $clientSecret,
             'region' => $region,
             'locale' => $locale,
             'realm_slug' => $this->normalize_slug($server),
@@ -1685,8 +1695,8 @@ final class Aths_Guild_Progress_Plugin
                 ->setTimezone(new DateTimeZone('Europe/Paris'))
                 ->format('Y-m-d H:i');
         }
-        $syncStatus = sanitize_key((string) filter_input(INPUT_GET, 'wgp_sync_status', FILTER_UNSAFE_RAW));
-        $syncMessage = sanitize_text_field((string) filter_input(INPUT_GET, 'wgp_sync_message', FILTER_UNSAFE_RAW));
+        $syncStatus = sanitize_key((string) filter_input(INPUT_GET, 'athsgupr_sync_status', FILTER_UNSAFE_RAW));
+        $syncMessage = sanitize_text_field((string) filter_input(INPUT_GET, 'athsgupr_sync_message', FILTER_UNSAFE_RAW));
         $settingsUpdated = sanitize_key((string) filter_input(INPUT_GET, 'settings-updated', FILTER_UNSAFE_RAW));
         $resolvedLocale = $settings['locale'] !== '' ? $settings['locale'] : $this->get_default_locale_for_region((string) $settings['region']);
         ?>
@@ -1706,7 +1716,7 @@ final class Aths_Guild_Progress_Plugin
             </p>
 
             <form method="post" action="options.php" class="wgp-admin-form">
-                <?php settings_fields('wgp_settings_group'); ?>
+                <?php settings_fields('athsgupr_settings_group'); ?>
                 <div class="wgp-admin-tabs" role="tablist" aria-label="<?php esc_attr_e('Aths Guild Progress for WoW settings', 'aths-guild-progress-for-wow'); ?>">
                     <button type="button" class="wgp-admin-tab is-active" data-tab="guild-import"><?php esc_html_e('Guild Import', 'aths-guild-progress-for-wow'); ?></button>
                     <button type="button" class="wgp-admin-tab" data-tab="appearance"><?php esc_html_e('Appearance', 'aths-guild-progress-for-wow'); ?></button>
@@ -1735,7 +1745,7 @@ final class Aths_Guild_Progress_Plugin
                         </div>
                         <div class="wgp-admin-actions">
                             <?php submit_button(__('Save Changes', 'aths-guild-progress-for-wow'), 'primary', 'submit', false); ?>
-                            <button type="submit" class="button button-secondary" form="wgp-manual-sync-form"><?php esc_html_e('Sync Guild Data', 'aths-guild-progress-for-wow'); ?></button>
+                            <button type="submit" class="button button-secondary" form="athsgupr-manual-sync-form"><?php esc_html_e('Sync Guild Data', 'aths-guild-progress-for-wow'); ?></button>
                         </div>
                         <?php if ($settingsUpdated !== '') : ?>
                             <div class="wgp-inline-notice wgp-inline-notice--success"><p><?php esc_html_e('Settings saved.', 'aths-guild-progress-for-wow'); ?></p></div>
@@ -1839,9 +1849,9 @@ final class Aths_Guild_Progress_Plugin
                 </section>
             </form>
 
-            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" id="wgp-manual-sync-form" class="wgp-admin-sync-form">
-                <?php wp_nonce_field('wgp_manual_sync'); ?>
-                <input type="hidden" name="action" value="wgp_manual_sync" />
+            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" id="athsgupr-manual-sync-form" class="wgp-admin-sync-form">
+                <?php wp_nonce_field('athsgupr_manual_sync'); ?>
+                <input type="hidden" name="action" value="athsgupr_manual_sync" />
                 <p class="description"><?php esc_html_e('Runs an immediate Battle.net sync for guild progression data. Automatic sync still runs daily.', 'aths-guild-progress-for-wow'); ?></p>
             </form>
         </div>
@@ -1853,7 +1863,7 @@ final class Aths_Guild_Progress_Plugin
         if (!current_user_can('manage_options')) {
             wp_die('Unauthorized.');
         }
-        check_admin_referer('wgp_manual_sync');
+        check_admin_referer('athsgupr_manual_sync');
 
         $this->refresh_progress_data();
         $cache = get_option(self::CACHE_OPTION, array());
@@ -1863,8 +1873,8 @@ final class Aths_Guild_Progress_Plugin
             add_query_arg(
                 array(
                     'page' => self::PAGE_SLUG,
-                    'wgp_sync_status' => $error === '' ? 'success' : 'error',
-                    'wgp_sync_message' => $error === '' ? 'Guild progress synced successfully.' : $error,
+                    'athsgupr_sync_status' => $error === '' ? 'success' : 'error',
+                    'athsgupr_sync_message' => $error === '' ? 'Guild progress synced successfully.' : $error,
                 ),
                 admin_url('admin.php')
             )
@@ -2045,8 +2055,8 @@ if (class_exists('WP_Widget')) {
                 echo $args['before_title'] . esc_html($instance['title']) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             }
 
-            wp_enqueue_style('wgp-style');
-            wp_enqueue_script('wgp-script');
+            wp_enqueue_style('athsgupr-style');
+            wp_enqueue_script('athsgupr-script');
             echo Aths_Guild_Progress_Plugin::instance()->build_progress_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }

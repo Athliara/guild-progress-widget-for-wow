@@ -4,7 +4,7 @@
     function updateLocalePreview(root) {
         var regionSelect = root.querySelector('[data-region-select]');
         var preview = root.querySelector('[data-locale-preview]');
-        var localeMap = window.wgpAdminSettings && window.wgpAdminSettings.localeMap ? window.wgpAdminSettings.localeMap : {};
+        var localeMap = window.athsguprAdminSettings && window.athsguprAdminSettings.localeMap ? window.athsguprAdminSettings.localeMap : {};
 
         if (!regionSelect || !preview) {
             return;
